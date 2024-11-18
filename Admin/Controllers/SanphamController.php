@@ -1,17 +1,29 @@
 <?php
     require_once "./Controllers/DanhmucController.php";
     require_once "./Controllers/DanhmucconController.php";
+    require_once "./Controllers/DungluongController.php";
+    require_once "./Controllers/MausacController.php";
+    require_once "./Controllers/SanphamDeltailController.php";
     require_once "./Model/danhmuc.php";
     require_once "./Model/sanpham.php";
     require_once "./Model/danhmuccon.php";
+    require_once "./Model/dungluong.php";
+    require_once "./Model/mausac.php";
+    require_once "./Model/SanphamDetail.php";
     class SanphamControllers{
         public $SanphamModel;
         public $DanhmucModel;
         public $danhmuccon;
+        public $dungluongModel;
+        public $mausacModel;
+        public $detailModel;
         public function __construct(){
             $this -> SanphamModel = new Sanpham();
             $this -> DanhmucModel = new Danhmuc();
             $this-> danhmuccon = new Subcategory();
+            $this->dungluongModel = new Dungluong();
+            $this -> mausacModel = new Mausac();
+            $this->detailModel = new productDetail();
         }
         public function listSanPham(){
             if(isset($_POST['go']) && ($_POST['go'])){
@@ -30,7 +42,7 @@
             require_once "./Views/sanpham/ListSanpham.php";
         }
         public function list(){
-            $listSP = $this->SanphamModel->list();
+            $listSP = $this->SanphamModel->listsp();
         }
         public function deleteSanPham(){
             $idsp = $_GET['id'];
@@ -44,54 +56,51 @@
         }
         public function postcreateSanpham(){
             if(isset($_POST['create']) && ($_POST['create'])){
-                $image="./Uploads".$_FILES['anhSanpham']['name'];
-                if(move_uploaded_file($_FILES['anhSanpham']['tmp_name'],$image))
-                $anhSanpham = $image;
-                
                 $tensanpham = $_POST['tenSanpham'];
-                $giaban = $_POST['giaban'];
-                $giagoc = $_POST['giagoc'];
                 $ngaynhap = $_POST['ngaynhap'];
                 $thongtin = $_POST['thongtin'];
                 $hangsx = $_POST['hangsanxuat'];
                 $ma_danhmuc = $_POST['ma_danhmuc'];
                 $ma_danhmuc_con = $_POST['danhmuc_con'];
-                $this->SanphamModel->createSanpham($tensanpham,$anhSanpham,$giaban,$giagoc,$ngaynhap,$thongtin,$hangsx,$ma_danhmuc,$ma_danhmuc_con);
-                header ("location:".BASE_URL_ADMIN."?act=listSanpham");
+                $_SESSION['create'] = "Thêm mới thành công";
+                $this->SanphamModel->createSanpham($tensanpham,$ngaynhap,$thongtin,$hangsx,$ma_danhmuc,$ma_danhmuc_con);
+                header ("location:".BASE_URL_ADMIN."?act=createSanpham");
             }
         }
         public function updateSanpham(){
-            $idsp = $_GET['id'];
-            $listDanhmuc = $this->DanhmucModel->listDanhmuc();
-            $Sanpham = $this->SanphamModel->find($idsp);
+            if(isset($_GET['id']) && ($_GET['id'])){
+                $idsp = $_GET['id'];
+                $listDanhmuc = $this->DanhmucModel->listDanhmuc();
+                $listDMC = $this->danhmuccon->listDMC();
+                $Sanpham = $this->SanphamModel->find($idsp);
+            }
             require_once "./Views/sanpham/UpdateSanpham.php";
         }
         public function postupdateSanpham(){
             if(isset($_POST['update']) && ($_POST['update'])){
                 $idsp = $_GET['id'];
-                $Sanpham = $this->SanphamModel->find($idsp);
-                $anhsp = $Sanpham['image'];
-                $image = "./Uploads/".basename($_FILES['anhSanpham']['name']);
-                if(move_uploaded_file($_FILES['anhSanpham']['tmp_name'],$image)){
-                    $anhsp = $image;
-                } 
+                $Sanpham = $this->SanphamModel->find($idsp); 
                 $tensanpham = $_POST['tenSanpham'];
-                $giaban = $_POST['giaban'];
-                $giagoc = $_POST['giagoc'];
                 $ngaynhap = $_POST['ngaynhap'];
                 $thongtin = $_POST['thongtin'];
-                $mausac = $_POST['mausac'];
                 $hangsx = $_POST['hangsanxuat'];
-                $dungluong = $_POST['dungluong'];
                 $ma_danhmuc = $_POST['ma_danhmuc'];
-                $this->SanphamModel->updateSanpham($idsp,$tensanpham,$anhsp,$giaban,$giagoc,$ngaynhap,$thongtin,$mausac,$hangsx,$dungluong,$ma_danhmuc);
-                header ("location:".BASE_URL_ADMIN."?act=listSanpham");
+                $ma_danhmuc_con = $_POST['ma_danhmuc_con'];
+                $_SESSION['update'] = "Cập nhập thành công !";
+                $this->SanphamModel->updateSanpham($idsp,$tensanpham,$ngaynhap,$thongtin,$hangsx,$ma_danhmuc,$ma_danhmuc_con);
+                header ("location:".BASE_URL_ADMIN."?act=updateSanpham");
             }
         }
         public function eyeSanpham(){
             $idsp = $_GET['id'];
             $eyeSanpham = $this->SanphamModel->eye($idsp);
+            $Sanpham = $this->SanphamModel->find($idsp);
             require_once "./Views/sanpham/eyeSanpham.php";
+        }
+        public function getByNameProducts(){
+            $detail = $this->detailModel->find($id_spct);
+            $id_sp = $detail['id_sanpham'];
+            $ten_sp = $this->SanphamModel->getByNameProducts($id_sp);
         }
     }
 ?>

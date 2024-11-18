@@ -53,6 +53,17 @@
                 $e -> getMessage();
             }
         }
+        function getByNameDanhmuc($id_danhmuc) {
+            try {
+                // Sử dụng ID để truy vấn tên danh mục từ bảng 'danhmuc'
+                $sql = "SELECT ten_danhmuc FROM danhmuc WHERE ma_danhmuc = {$id_danhmuc}";
+                $stmt = $this->danhmuc->query($sql);
+                $data = $stmt -> fetch();      
+                return $data;
+            } catch (Exception $e) {
+                $e->getMessage(); // Xử lý ngoại lệ nếu có lỗi
+            }
+        }        
         public function __destruct(){
             $this->danhmuc = null;
         }

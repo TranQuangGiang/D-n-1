@@ -51,10 +51,16 @@
                 <i class="fa-solid fa-list"></i>
             </div>
             <h1>Thêm mới sản phẩm</h1>
+            <?php
+                if(isset($_SESSION['create'])){
+                    echo "<div class='alert alert-success'>" . $_SESSION['create'] ."</div>";
+                    unset($_SESSION['create']);
+                }
+            ?>
             <form action="?act=postCreateSanPham" method="POST" enctype="multipart/form-data">
                 <label for="">Mã danh mục</label>
                 <select name="ma_danhmuc" id="">
-                    <option value="p" selected>Tất cả</option>
+                    <option value="0" selected>Tất cả</option>
                     <?php
                         foreach($listDanhmuc as $Danhmuc){
                     ?>
@@ -65,7 +71,7 @@
                 </select>
                 <label for="">Hãng sản xuất</label>
                 <select name="danhmuc_con" id="">
-                    <option value="0" select>Tất cả</option>
+                    <option value="0" selected>Tất cả</option>
                     <?php
                         foreach($listDMC as $DMC){
                     ?>
@@ -79,19 +85,7 @@
                     <label for="exampleInputEmail1" class="form-label">Nhập tên sản phẩm</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="tenSanpham">
                 </div>
-                <div class="mb-3">
-                    <label for="formFileMultiple" class="form-label">Chọn ảnh sản phẩm</label>
-                    <input class="form-control" type="file" id="formFileMultiple" name="anhSanpham" style="height: 45px;">
-                </div>
                 <div class="mb-0">
-                    <div class="mb-3 form_be1">
-                        <label for="exampleInputEmail1" class="form-label">Nhập giá bán</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="giaban">
-                    </div>
-                    <div class="mb-3 form_be2">
-                        <label for="exampleInputEmail1" class="form-label">Nhập giá gốc</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="giagoc">
-                    </div>
                     <div class="mb-3 form_be3">
                         <label for="exampleInputEmail1" class="form-label">Ngày nhập hàng</label>
                         <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="ngaynhap">
@@ -105,33 +99,7 @@
                     <label for="exampleInputEmail1" class="form-label">Hãng sản xuất</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="hangsanxuat">
                 </div>
-                <div class="mb-3" id="click">
-                    <input type="radio" name="chon" value="thuong" onclick="chonAttributes()">Sản phẩm bình thường <input style="margin-left: 20px;" type="radio" name="chon" value="thuoctinh" onclick="chonAttributes()"> Sản phẩm có thuộc tính
-                    <div class="mb-3" id="attributeForm" style="display: none;">
-                        <label for="exampleInputEmail1" class="form-label">Tên thuộc tính</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="thuoctinh[0][name]">
-                        <label for="exampleInputEmail1" class="form-label">Giá trị thuộc tính</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="thuoctinh[0][value]">
-                    </div>
-                </div>
-                <script>
-                    function chonAttributes(){
-                        const radioInputs = document.getElementsByName("chon");
-                        const attributeForm = document.getElementById("attributeForm");
-
-                        for (radioInput of radioInputs) {
-                            if(radioInput.checked) {
-                                if (radioInput.value === "thuoctinh") {
-                                    attributeForm.style.display = "block";
-                                }
-                                else{
-                                    attributeForm.style.display = "none";
-                                }
-                            }
-                        }
-                    }
-                </script>
-                <input type="submit" value="Thêm mới" name="create" style="width: 150px; height: 35px; border-radius: 10px; margin-bottom: 50px;">
+                <input type="submit" value="Thêm mới" name="create" style="width: 150px; height: 40px; border: 0; border-radius: 10px; margin-bottom: 50px; background-color: #00CCFF; color: #fff;">
             </form>
             <script>
                 CKEDITOR.replace('thongtin', {

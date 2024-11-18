@@ -13,7 +13,7 @@
                 if ($ma_danhmuc_me > 0) {
                     $sql .= " AND ma_danhmuc_me = '".$ma_danhmuc_me."%'";
                 }
-                $sql .= " LIMIT " . intval($start) . ", " . intval($limit);
+                $sql .= " LIMIT " . ($start) . ", " . ($limit);
         
                 $stmt = $this->danhmucCon->query($sql);
                 $data = $stmt->fetchAll();
@@ -82,6 +82,17 @@
                 $sql = "SELECT * FROM `danhmuc_con` WHERE `danhmuc_con`.`id_danhmuc_con` = {$iddm_con}";
                 $stmt = $this->danhmucCon->query($sql);
                 $data = $stmt->fetch();
+                return $data;
+            }
+            catch (Exception $e){
+                $e -> getMessage();
+            }
+        }
+        public function getByNameDanhmucCon($id_danhmuc_con){
+            try{
+                $sql = "SELECT ten_danhmuc_con FROM danhmuc_con WHERE id_danhmuc_con = {$id_danhmuc_con}";
+                $stmt = $this->danhmucCon->query($sql);
+                $data = $stmt -> fetch();
                 return $data;
             }
             catch (Exception $e){

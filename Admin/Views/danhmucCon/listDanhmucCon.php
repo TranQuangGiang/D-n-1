@@ -106,7 +106,7 @@
                         <td><img src="<?= $DanhmucCon['anh_danhmuc_con'] ?>" alt="" width="50" height="50"></td>
                         <td><?= $DanhmucCon['ma_danhmuc_me'] ?></td>
                         <td>
-                            <a href="?act=deleteDanhmuccon&id=<?= $DanhmucCon['id_danhmuc_con'] ?>"><i class="fa-solid fa-trash" style="color: red;"></i></a></button> 
+                            <a onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này')" href="?act=deleteDanhmuccon&id=<?= $DanhmucCon['id_danhmuc_con'] ?>"><i class="fa-solid fa-trash" style="color: red;"></i></a></button> 
                             <a href="?act=updateDanhmuccon&id=<?= $DanhmucCon['id_danhmuc_con'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></button>
                         </td>
                     </tr> 

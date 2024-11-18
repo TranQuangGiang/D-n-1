@@ -79,6 +79,7 @@
             line-height: 80px;
             margin-left: 20px;
             color: #fff;
+            margin-top: 0px;
         }
         .left{
             margin-left: 90px;
@@ -119,30 +120,34 @@
                     <li>
                         <a href="?act=homeAdmin"><i class="fa-solid fa-house"></i> Trang chủ</a>
                     </li>
+                    <li><a href="" style="font-size: 17px"><i class="fa-solid fa-bars-progress"></i> Quản lý</a></li>
                     <li>
-                        <a href="#"><i class="fa-solid fa-list"></i>Quản lý Danh mục <i class="fa-solid fa-angle-left left"></i></a>
+                        <a style="padding-left: 15px;" style="font-size: 16px;" href="#"><i class="fa-solid fa-list"></i>Quản lý Danh mục<i class="fa-solid fa-angle-left left"></i></a>
                         <ul style="width: 100%;">
                             <li><a style="padding-left: 35px;" href="?act=listDanhmuc"> Danh mục mẹ</a></li>
                             <li><a style="padding-left: 35px;" href="?act=listDanhmuccon"> Danh mục con</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="?act=listSanpham"><i class="fa-solid fa-headphones"></i>Quản lý Sản phẩm</a>
+                        <a href="#" style="padding-left: 15px; font-size: 16px"><i class="fa-solid fa-headphones"></i> Quản lý Sản phẩm <i class="fa-solid fa-angle-left left"></i></a>
+                        <ul style="width: 100%;transition: 0.5s ease-out;">
+                            <li><a style="padding-left: 35px;" href="?act=listSanpham"><i class="fa-brands fa-apple"></i> Danh sách sản phẩm</a></li>
+                            <li><a style="padding-left: 35px;" href="?act=listmausac"><i class="fa-solid fa-palette"></i> Danh sách màu sắc sản phẩm</a></li>
+                            <li><a style="padding-left: 35px;" href="?act=listdungluong"><i class="fa-solid fa-database"></i> Danh sách dung lượng sản phẩm</a></li>
+                            <li><a style="padding-left: 35px;" href="?act=listpriceProduct"><i class="fa-solid fa-money-bill"></i> Danh sách giá sản phẩm</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="?act=listAnhsanpham"><i class="fa-solid fa-images"></i> Quản lý ảnh sản phẩm</a>
+                        <a href="" style="padding-left: 15px; font-size: 16px"><i class="fa-solid fa-users"></i>Quản lý tài khoản</a>
                     </li>
                     <li>
-                        <a href=""><i class="fa-solid fa-users"></i>Quản lý tài khoản</a>
+                        <a href="" style="padding-left: 15px; font-size: 16px"><i class="fa-solid fa-comment"></i>Quản lý bình luận</a>
                     </li>
                     <li>
-                        <a href=""><i class="fa-solid fa-comment"></i>Quản lý bình luận</a>
+                        <a href="" style="padding-left: 15px; font-size: 16px"><i class="fa-solid fa-chart-simple"></i> Thống kê</a>
                     </li>
                     <li>
-                        <a href=""><i class="fa-solid fa-chart-simple"></i> Thống kê</a>
-                    </li>
-                    <li>
-                        <a href=""> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                        <a href="" style="padding-left: 15px;  font-size: 16px"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
                                     <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/>
                                 </svg > Quản lý đơn hàng</a>
                     </li>

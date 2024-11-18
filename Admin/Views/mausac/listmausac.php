@@ -46,34 +46,50 @@
     </style>
 </head>
 <body>
-    <section class="Danhmuc">
+<section class="Danhmuc">
         <?php require_once "../Admin/header.php"; ?>
         <section class="contenDanhmuc">
             <div class="list">
                 <i class="fa-solid fa-list"></i>
             </div>
             <div class="button" style="display: flex; margin-bottom: 30px;">
-                <h1>Danh sách danh mục</h1>
-                <a style="margin-top: 20px; margin-left: 680px;" href="?act=createDanhmuc"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Thêm mới</button></a>
+                <h1>Danh sách màu sắc sản phẩm</h1>
+                <a style="margin-top: 20px; margin-left: 520px;" href="?act=createMausac"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Thêm mới</button></a>
             </div>
             <article>
-                <table class="table table-striped">
+                <form action="?act=listmausac" method="POST">
+                    <input type="text" name="keyword" placeholder="Bạn cần tìm gì ..." class="keyword" style="width: 300px; border-radius: 10px; height: 35px;">
+                    <select name="ma_sp" style="width: 250px; height: 35px;border-radius: 10px;">
+                        <option value="0" selected>Sản phẩm</option>
+                        <?php 
+                            foreach($listSP as $Sanpham){
+                        ?>
+                        <option value="<?= $Sanpham['ma_sp'] ?>"><?= $Sanpham['ten_sp'] ?></option>
+                        <?php 
+                            }
+                        ?>
+                    </select>
+                    <input type="submit" name="go" value="Go" style="width: 60px; font-family: sans-serif; border-radius: 10px; height: 35px;">
+                </form>
+                <table class="table table-striped" style="margin-top: 30px;">
                     <tr>
-                        <th>Mã Danh Mục</th>
-                        <th>Tên Danh Mục</th>
-                        <th>Ảnh Danh Mục</th>
+                        <th>Mã màu sắc</th>
+                        <th>Tên màu </th>
+                        <th>Ảnh màu</th>
+                        <th>Mã sản phẩm</th>
                         <th>Hành Động</th>
                     </tr>
                     <?php 
-                        foreach($listDanhmuc as $Danhmuc){
+                        foreach($listMausac as $mausac){
                     ?>
                     <tr>
-                        <td><?= $Danhmuc['ma_danhmuc'] ?></td>
-                        <td><?= $Danhmuc['ten_danhmuc'] ?></td>
-                        <td><img src="<?= $Danhmuc['anh_danhmuc'] ?>" alt="" width="50" height="50"></td>
+                        <td><?= $mausac['id_mau'] ?></td>
+                        <td><?= $mausac['ten_mau'] ?></td>
+                        <td><img src="<?= $mausac['anh_mau'] ?>" alt="" width="50" height="50"></td>
+                        <td><?= $mausac['id_sanpham'] ?></td>
                         <td>
-                            <a class="a1" href="?act=deleteDanhmuc&id=<?= $Danhmuc['ma_danhmuc'] ?>"><i class="fa-solid fa-trash" style="color: red;"></i></a> 
-                            <a href="?act=updateDanhmuc&id=<?= $Danhmuc['ma_danhmuc'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')" class="a1" href="?act=deleteMausac&id=<?= $mausac['id_mau'] ?>"><i class="fa-solid fa-trash" style="color: red;"></i></a> 
+                            <a href="?act=updateMausac&id=<?= $mausac['id_mau'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                         </td>
                     </tr> 
                     <?php 

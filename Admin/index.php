@@ -6,13 +6,19 @@
     require_once "./Controllers/DanhmucController.php";
     require_once "./Controllers/DanhmucconController.php";
     require_once "./Controllers/SanphamController.php";
-    require_once "./Controllers/AnhsanphamController.php";
     require_once "./Controllers/HomeController.php";
+    require_once "./Controllers/MausacController.php";
+    require_once "./Controllers/DungluongController.php";
+    require_once "./Controllers/PriceController.php";
+    require_once "./Controllers/SanphamDeltailController.php";
     // require_once toàn bộ file model
     require_once "./Model/danhmuc.php";
     require_once "./Model/sanpham.php";
     require_once "./Model/danhmuccon.php";
-    require_once "./Model/anhsanpham.php";
+    require_once "./Model/mausac.php";
+    require_once "./Model/dungluong.php";
+    require_once "./Model/price.php";
+    require_once "./Model/SanphamDetail.php";
     // Rote
     $act = $_GET['act'] ?? '/';
     $page = (int)($_GET['page'] ?? 1); // Lấy số trang từ URL hoặc mặc định là 1
@@ -42,11 +48,33 @@
         'postcreateDanhmuccon' => (new DanhmucconConstrollers())-> postcreateDanhmucCon(),
         'updateDanhmuccon' => (new DanhmucconConstrollers()) -> updateDanhmucCon(),
         'postupdateDanhmuccon' => (new DanhmucconConstrollers()) -> postupdateDanhmuccon(),
-        // anhsanpham
-        'listAnhsanpham' => (new AnhSanphamControllers())->listAnhsanpham(),
-        'deleteAnhsanpham' => (new AnhSanphamControllers())->deleteAnhsanpham(),
-        'createAnhsanpham' => (new AnhSanphamControllers())->createAnhsanpham(),
-        'postcreateAnhsanpham' => (new AnhSanphamControllers())->postcreateAnhsanpham(),
+        // mausac
+        'listmausac' => (new MausacControllers())->listMausacsanpham(),
+        'deleteMausac' => (new MausacControllers())->deleteMausacsanpham(),
+        'createMausac' => (new MausacControllers())->createMausacsanpham(),
+        'postcreateMausanpham' => (new MausacControllers())->postcreateMausacsanpham(),
+        'updateMausac' => (new MausacControllers())->updateMausacsanpham(),
+        'postupdateMausanpham' => (new MausacControllers())->postupdateMausacsanpham(),
+        // dung lượng
+        'listdungluong' => (new DungluongControllers()) -> listdungluong(),
+        'deleteDungluong' => (new DungluongControllers()) -> deleteDungluong(),
+        'createDungluong' => (new DungluongControllers()) -> createDungluong(),
+        'postcreateDungluong' => (new DungluongControllers()) -> postcreateDungluong(),
+        'updateDungluong' => (new DungluongControllers()) -> updateDungluong(),
+        'postupdateDungluong' => (new DungluongControllers()) -> postupdateDungluong(),
+        // giá sản phẩm
+        'listpriceProduct' => (new PriceControllers()) -> listprice(),
+        'createPrice' => (new PriceControllers()) -> createPrice(),
+        'postcreatePrice' => (new PriceControllers()) -> postcreatePrice(),
+        'updatePrice' => (new PriceControllers()) -> updatePrice(),
+        'postupdatePrice' => (new PriceControllers()) -> postupdatePrice(),
+        'deletePrice' => (new PriceControllers()) -> deletePrice(),
+        // biến thể sản phẩm
+        'listProductDetail' => (new ProductDetailControllers()) -> listProductDetail(),
+        'createDetail' => (new ProductDetailControllers()) -> createDetail(),
+        'postcreateDetail' => (new ProductDetailControllers()) -> postcreateDetail(),
+        'updateDetail' => (new ProductDetailControllers()) -> updateDetail(),
+        'postupdateDetail' => (new ProductDetailControllers()) -> postupdateDetail(),
     };
     
 

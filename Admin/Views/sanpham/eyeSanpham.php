@@ -57,41 +57,34 @@
                 </div>
                 <div class="conten" style="display: flex;">
                     <h1 style="margin-top: 10px;">Xem chi tiết sản phẩm</h1>
-                    <a href="?act=listSanpham" style="margin-left: 610px; margin-top: 20px"><button type="button" class="btn btn-success"><i class="fa-solid fa-list"></i> Danh sách</button></a> 
+                    <a href="?act=listSanpham" style="margin-left: 650px; margin-top: 20px"><button type="button" class="btn btn-success"><i class="fa-solid fa-list"></i> Danh sách</button></a> 
                 </div> 
-                </form>
                 <table class="table table-striped">
                     <tr>
                         <th>Mã Sản Phẩm</th>
                         <th>Tên/Ảnh Sản Phẩm</th>
-                        <th>Giá Bán</th>
-                        <th>Giá Gốc</th>
                         <th>Ngày nhập</th>
                         <th>Thông tin chi tiết</th>
-                        <th>Lượt xem</th>
-                        <th>Màu sắc</th>
                         <th>Hãng Sản Xuất</th>
-                        <th>Dung lượng</th>
                         <th>Mã danh mục mẹ</th>
                         <th>Mã danh mục con</th>
                         <th>Hành Động</th>
                     </tr>
                     <?php 
                         foreach($eyeSanpham as $eye){
+                            $id_danhmuc = $Sanpham['ma_danhmuc'];
+                            $id_danhmuc_con = $Sanpham['ma_danhmuc_con'];
+                            $ten_danhmuc = $this->DanhmucModel->getByNameDanhmuc($id_danhmuc);
+                            $ten_danhmuc_con = $this->danhmuccon->getByNameDanhmucCon($id_danhmuc_con);
                     ?>
                     <tr>
                         <td><?= $eye['ma_sp'] ?></td>
-                        <td><?= $eye['ten_sp'] ?><img src="<?= $eye['image'] ?>" alt="" width="50" height="50"></td>
-                        <td><?= $eye['giaban'] ?></td>
-                        <td><?= $eye['giagoc'] ?></td>
+                        <td><?= $eye['ten_sp'] ?></td>
                         <td><?= $eye['ngaynhap'] ?></td>
-                        <td style="text-align: justify;"><?= $eye['thongtin'] ?></td>
-                        <td><?= $eye['luot_xem'] ?></td>
-                        <td><?= $eye['mausac'] ?></td>
+                        <td style="text-align: justify; width: 200px;"><?= $eye['mota_sanpham'] ?></td>
                         <td><?= $eye['hang_sanxuat'] ?></td>
-                        <td><?= $eye['dungluong'] ?></td>
-                        <td><?= $eye['ma_danhmuc'] ?></td>
-                        <td><?= $eye['ma_danhmuc_con'] ?></td>
+                        <td><?= $ten_danhmuc['ten_danhmuc'] ?></td>
+                        <td><?= $ten_danhmuc_con['ten_danhmuc_con'] ?></td>
                         <td>
                             <a href="?act=deleteSanpham&id=<?= $eye['ma_sp'] ?>"><i class="fa-solid fa-trash" style="color: red;"></i> </a> 
                             <a href="?act=updateSanpham&id=<?= $eye['ma_sp'] ?>"><i class="fa-solid fa-pen-to-square"></i> </a>

@@ -36,6 +36,12 @@
                 <i class="fa-solid fa-list"></i>
             </div>
             <h1>Thêm mới danh mục con</h1>
+            <?php
+                if(isset($_SESSION['create'])){
+                    echo "<div class='alert alert-success'>" . $_SESSION['create'] ."</div>";
+                    unset($_SESSION['create']);
+                }
+            ?>
             <form action="?act=postcreateDanhmuccon" method="POST" enctype="multipart/form-data">
                 <label for="exampleInputPassword1" class="form-label">Danh mục mẹ</label>
                 <select name="ma_danhmuc_me" id="" style="border-radius: 10px; height: 35px; width: 200px;">

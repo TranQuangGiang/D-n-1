@@ -43,7 +43,16 @@
             <div class="list">
                 <i class="fa-solid fa-list"></i>
             </div>
-            <h1>Cập nhập danh mục</h1>
+            <div class="button" style="display: flex; margin-bottom: 30px;">
+                <h1>Cập nhập danh mục</h1>
+                <a style="margin-top: 20px; margin-left: 690px;" href="?act=listDanhmuc"><button type="button" class="btn btn-success"><i class="fa-solid fa-list"></i> Danh sách</button></a> 
+            </div>
+            <?php
+                if(isset($_SESSION['update'])){
+                    echo "<div class='alert alert-success'>" . $_SESSION['update'] ."</div>";
+                    unset($_SESSION['update']);
+                }
+            ?>
             <form action="?act=postupdateDanhmuc&id=<?= $Danhmuc['ma_danhmuc'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Nhập tên danh mục</label>
@@ -51,13 +60,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Chọn ảnh danh mục</label>
-                    <input type="file" class="form-control" id="exampleInputPassword1" name="anhDanhmuc">
-                    <img src="<?= $Danhmuc['anh_danhmuc'] ?>" alt="" width="150" height="200">
+                    <input type="file" class="form-control" id="exampleInputPassword1" name="anhDanhmuc" style="height: 44px">
+                    <img src="<?= $Danhmuc['anh_danhmuc'] ?>" alt="" width="90" height="90">
                 </div>
-                <input type="submit" value="Sửa đổi" name="update" style="width: 120px; height: 30px; border-radius: 10px; border: 1px solid gray">
-                <section class="button">
-                    <button type="reset" class="btn btn-success">Nhập lại</button>
-                    <a href="?act=listDanhmuc"><button type="button" class="btn btn-danger">Danh sách</button></a> 
+                <section class="button" style="margin-top: 20px; display: flex;">
+                    <input type="submit" value="Sửa đổi" name="update"  style="width: 100px; height: 40px; border-radius: 5px; border: 0; background-color: #0dcaf0; color: #000;">
+                    <button type="reset" style="margin-left: 10px;" class="btn btn-danger">Nhập lại</button>
                 </section>
             </form>
         </section>

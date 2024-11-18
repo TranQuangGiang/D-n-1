@@ -83,31 +83,33 @@
                 </form>
                 <table class="table table-striped">
                     <tr>
-                        <th>Check <input type="checkbox"></th>
                         <th>Mã Sản Phẩm</th>
                         <th>Tên/Ảnh Sản Phẩm</th>
-                        <th>Giá Bán</th>
-                        <th>Giá Gốc</th>
-                        <th>Ngày nhập</th>
                         <th>Hãng Sản Xuất</th>
-                        <th>Dung lượng</th>
+                        <th>Ngày nhập</th>
+                        <th>Mô tả sản phẩm</th>
+                        <th>Danh mục mẹ</th>
+                        <th>Danh mục con</th>
                         <th>Hành Động</th>
                     </tr>
                     <?php 
-                        foreach($ListSanpham as $Sanpham){
+                        foreach($ListSanpham as $Sanpham){ 
+                            $id_danhmuc = $Sanpham['ma_danhmuc']; 
+                            $ten_danhmuc = $this->DanhmucModel->getByNameDanhmuc($id_danhmuc);
+                            $id_danhmuc_con = $Sanpham['ma_danhmuc_con'];
+                            $ten_danhmuc_con = $this->danhmuccon->getByNameDanhmucCon($id_danhmuc_con);
                     ?>
                     <tr>
-                        <td><input type="checkbox"></td>
                         <td><?= $Sanpham['ma_sp'] ?></td>
-                        <td><?= $Sanpham['ten_sp'] ?><img src="<?= $Sanpham['image'] ?>" alt="" width="50" height="50"></td>
-                        <td><?= $Sanpham['giaban'] ?></td>
-                        <td><?= $Sanpham['giagoc'] ?></td>
-                        <td><?= $Sanpham['ngaynhap'] ?></td>
+                        <td><?= $Sanpham['ten_sp'] ?></td>
                         <td><?= $Sanpham['hang_sanxuat'] ?></td>
-                        <td><?= $Sanpham['dungluong'] ?></td>
+                        <td><?= $Sanpham['ngaynhap'] ?></td>
+                        <td><?= $Sanpham['mota_sanpham'] ?></td>
+                        <td><?= $ten_danhmuc['ten_danhmuc'] ?></td>
+                        <td><?= $ten_danhmuc_con['ten_danhmuc_con']?></td>
                         <td>
                             <a href="?act=eyeSanpham&id=<?= $Sanpham['ma_sp'] ?>"><i class="fa-solid fa-eye"></i></a>
-                            <a href="?act=deleteSanpham&id=<?= $Sanpham['ma_sp'] ?>"><i class="fa-solid fa-trash" style="color: red;"></i> </a> 
+                            <a onclick = "return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không ?')" href="?act=deleteSanpham&id=<?= $Sanpham['ma_sp'] ?>"><i class="fa-solid fa-trash" style="color: red;"></i> </a> 
                             <a href="?act=updateSanpham&id=<?= $Sanpham['ma_sp'] ?>"><i class="fa-solid fa-pen-to-square"></i> </a>
                         </td>
                     </tr> 
