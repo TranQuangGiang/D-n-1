@@ -1,9 +1,8 @@
 <?php
-    class HomeControllers
-    {
+    class HomeControllers{
         public function homeAdmin() {
             require './Views/homeAdmin.php';
-        }  
+        }
     }
 
 ?>

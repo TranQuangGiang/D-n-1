@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body{
@@ -58,15 +58,15 @@
                     }
                 ?>
                 <form action="?act=postupdateDungluong&id=<?= $Dungluong['id_dungluong']?>" method="POST" enctype="multipart/form-data">
-                <label for="">Sản phẩm</label>
-                    <select name="ma_sanpham" style="width: 200px; height: 35px; border-radius: 10px;">
+                <label class="form-label"  style="margin-left: 5px; display: flex;" for="">Sản phẩm <p style="color: red; margin-left: 5px;">(*)</p></label>
+                    <select name="ma_sanpham" class="form-select" aria-label="Default select example">
                         <option value="0" selected>Chọn sản phẩm</option>
                         <?php foreach($listSP as $sanpham) { ?>
                             <option value="<?= $sanpham['ma_sp'] ?>"><?= $sanpham['ten_sp'] ?></option>
                         <?php } ?>
                     </select>
                     <div class="mb-3" style="margin-top: 20px;">
-                        <label for="exampleInputEmail1" class="form-label">Nhập tên dung lượng</label>
+                        <label for="exampleInputEmail1" class="form-label" style="margin-left: 5px; display: flex; margin-bottom: 0px">Nhập tên dung lượng <p style="color: red; margin-left: 5px;">(*)</p></label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="tendungluong" value="<?= isset($Dungluong['ten_dungluong']) ? $Dungluong['ten_dungluong'] : '' ?>">
                     </div>
                     <section class="button" style="margin-top: 20px; display: flex;">

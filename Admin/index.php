@@ -11,6 +11,7 @@
     require_once "./Controllers/DungluongController.php";
     require_once "./Controllers/PriceController.php";
     require_once "./Controllers/SanphamDeltailController.php";
+    require_once "./Controllers/ClientController.php";
     // require_once toàn bộ file model
     require_once "./Model/danhmuc.php";
     require_once "./Model/sanpham.php";
@@ -23,7 +24,9 @@
     $act = $_GET['act'] ?? '/';
     $page = (int)($_GET['page'] ?? 1); // Lấy số trang từ URL hoặc mặc định là 1
     match($act){
-        // Trang chủ
+        //Client
+        '/' => (new ClientController())->homeClient(),
+        // Trang chủ Admin
         'homeAdmin' => (new HomeControllers())->homeAdmin(),
         // Dannhmuc
         'listDanhmuc' => (new DanhmucConstrollers())->listDanhmuc(),
@@ -32,6 +35,7 @@
         'postcreateDanhmuc' => (new DanhmucConstrollers())->postcreateDanhmuc(),
         'updateDanhmuc' => (new DanhmucConstrollers())->updateDanhmuc(),
         'postupdateDanhmuc' => (new DanhmucConstrollers())->postupdateDanhmuc(),
+        'headerDanhmuc' => (new DanhmucConstrollers())->postupdateDanhmuc(),
         // Sản Phẩm
         'listSanpham' => (new SanphamControllers())->listSanPham(),
         'listSanpham' => (new SanphamControllers())->list(),
@@ -70,11 +74,15 @@
         'postupdatePrice' => (new PriceControllers()) -> postupdatePrice(),
         'deletePrice' => (new PriceControllers()) -> deletePrice(),
         // biến thể sản phẩm
-        'listProductDetail' => (new ProductDetailControllers()) -> listProductDetail(),
+        'listProductDetail' => (new ProductDetailControllers()) -> listProductDetail($page),
         'createDetail' => (new ProductDetailControllers()) -> createDetail(),
         'postcreateDetail' => (new ProductDetailControllers()) -> postcreateDetail(),
         'updateDetail' => (new ProductDetailControllers()) -> updateDetail(),
         'postupdateDetail' => (new ProductDetailControllers()) -> postupdateDetail(),
+        'deleteDetail' => (new ProductDetailControllers()) ->  deleteDetail(),
+        // giao diện
+        // nav
+        
     };
     
 

@@ -85,5 +85,11 @@
             $id_danhmuc_con = $Sanpham['ma_danhmuc_con'];
             $ten_danhmuc_con = $this->danhmuccon->getByNameDanhmucCon($id_danhmuc_con);
         }
+        // danh mục con ra menu
+        public function listDanhmucNav(){
+            $danhmucCon = $this->danhmuccon->find($iddm_con);
+            $danhmuc_me = $danhmucCon['ma_danhmuc_me'];
+            $DanhmucNav = $this->danhmuccon->listNav($danhmuc_me);
+        }
     }
 ?>

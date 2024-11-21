@@ -98,8 +98,8 @@
                     ?>
                     <tr>
                         <td><?= $detail['id_sp_chitiet'] ?></td>
-                        <td><?= $ten_sp['ten_sp'] ?></td>
-                        <td><?= $value_price['price'] ?></td>
+                        <td><?= $ten_sp['ten_sp'] ?> <?= $ten_dungluong['ten_dungluong'] ?></td>
+                        <td><?= $value_price['price'] ?> VND</td>
                         <td><?= $nameColor['ten_mau'] ?></td>
                         <td><?= $ten_dungluong['ten_dungluong'] ?></td>
                         <td><img src="<?= $detail['image_url'] ?>" alt="" width="50" height="50"></td>
@@ -114,6 +114,15 @@
                     ?>
                 </table> 
             </article>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                        <li class="page-item <?= $i === $page ? 'active' : '' ?>">
+                            <a class="page-link" href="?act=listProductDetail&page=<?= $i ?>"><?= $i ?></a>
+                        </li>
+                    <?php endfor; ?>
+                </ul>
+            </nav>
         </section>
     </section>
 </body>

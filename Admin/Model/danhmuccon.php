@@ -68,6 +68,17 @@
                 $e -> getMessage();
             }
         }
+        public function listNav($danhmuc_me){
+            try{
+                $sql = "SELECT * FROM `danhmuc_con` WHERE `ma_danhmuc_me` = {$danhmuc_me}";
+                $stmt = $this->danhmucCon->query($sql);
+                $data = $stmt -> fetchAll();
+                return $data;
+            }
+            catch (Exception $e){
+                $e -> getMessage();
+            }
+        }
         public function updateDanhmuccon($iddm_con,$tenDanhmucCon,$anhDanhmucCon,$ma_danhmuc_me){
             try{
                 $sql = "UPDATE `danhmuc_con` SET `ten_danhmuc_con` = '$tenDanhmucCon', `anh_danhmuc_con` = '$anhDanhmucCon', `ma_danhmuc_me` = '$ma_danhmuc_me' WHERE `danhmuc_con`.`id_danhmuc_con` = {$iddm_con}";

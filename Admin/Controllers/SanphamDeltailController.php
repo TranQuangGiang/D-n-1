@@ -20,16 +20,25 @@
             $this -> mausacModel = new Mausac();
             $this->priceModel = new Price();
         }
-        public function listProductDetail(){
+        public function listProductDetail($page){
             if(isset($_POST['go']) && ($_POST['go'])){
                 $ma_sp = $_POST['ma_sp'];
             }
             else{
                 $ma_sp = 0;
             }
-            $listDetail = $this->detailModel->listDetail($ma_sp);
+            $limit = 12;
+            $start = ($page - 1) * $limit;
+            $detail = $this->detailModel->listDetail($ma_sp,$limit,$start);
+            $listDetail = $detail['data'];
+            $totalPages = $detail['totalPages'];
             $listSP = $this->SanphamModel->listsp();
             require_once "./Views/detail/listDetail.php";
+        }
+        public function deleteDetail(){
+            $id_spct = $_GET['id'];
+            $this->detailModel->deleteDetail($id_ctsp);
+            header("location:".BASE_URL_ADMIN."?act=listProductDetail");
         }
         public function createDetail(){
             $listSP = $this->SanphamModel->listsp();

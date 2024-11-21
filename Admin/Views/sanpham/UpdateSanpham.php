@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body{
@@ -41,7 +41,10 @@
             <div class="list">
                 <i class="fa-solid fa-list"></i>
             </div>
-            <h1 style="margin-bottom: 40px;">Update Sản Phẩm</h1>
+            <div class="list-title" style="display: flex">
+                <h1>Update sản phẩm</h1>
+                <a href="?act=listSanpham" style="margin-left: 730px; margin-top: 10px"><button type="button" class="btn btn-success"><i class="fa-solid fa-list"></i> Danh sách</button></a> 
+            </div>
             <?php
                 if(isset($_SESSION['update'])){
                     echo "<div class='alert alert-success'>" . $_SESSION['update'] ."</div>";
@@ -49,8 +52,8 @@
                 }
             ?>
             <form action="?act=postupdateSanpham&id=<?= $Sanpham['ma_sp'] ?>" method="POST" enctype="multipart/form-data">
-                <label for="">Mã Danh mục</label>
-                <select name="ma_danhmuc" id="" style="height: 30px; border-radius: 10px">
+                <label for="" style="margin-left: 5px; display: flex;">Mã Danh mục <p style="color: red; margin-left: 5px;">(*)</p></label>
+                <select name="ma_danhmuc" id="" class="form-select" aria-label="Default select example">
                     <?php 
                         foreach ($listDanhmuc as $Danhmuc){
                     ?>
@@ -59,8 +62,8 @@
                         }
                     ?>
                 </select>
-                <label for="">Mã Danh Con</label>
-                <select name="ma_danhmuc_con" id="" style="height: 30px; border-radius: 10px">
+                <label for="" style="margin-left: 5px; display: flex; margin-top: 10px; margin-bottom: 0px">Danh Mục Con <p style="color: red; margin-left: 5px;">(*)</p></label>
+                <select name="ma_danhmuc_con" id="" class="form-select" aria-label="Default select example">
                     <?php 
                         foreach ($listDMC as $DanhmucCon){
                     ?>
@@ -69,22 +72,21 @@
                         }
                     ?>
                 </select>
-                <a href="?act=listSanpham" style="margin-left: 480px"><button type="button" class="btn btn-success"><i class="fa-solid fa-list"></i> Danh sách</button></a> 
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nhập tên sản phẩm</label>
+                    <label for="exampleInputEmail1" class="form-label" style="margin-left: 5px; display: flex; margin-top: 10px; margin-bottom: 0px">Nhập tên sản phẩm <p style="color: red; margin-left: 5px;">(*)</p></label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="tenSanpham" value="<?= isset($Sanpham['ten_sp']) ? $Sanpham['ten_sp'] : ''?>">
                 </div>
                 <div class="mb-0">
-                        <label for="exampleInputEmail1" class="form-label">Ngày nhập hàng</label>
+                        <label for="exampleInputEmail1" class="form-label" style="margin-left: 5px; display: flex; margin-top: 10px; margin-bottom: 0px">Ngày nhập hàng <p style="color: red; margin-left: 5px;">(*)</p></label>
                         <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="ngaynhap" value="<?= isset($Sanpham['ngaynhap']) ? $Sanpham['ngaynhap'] : ''?>">
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Nhập thông tin sản phẩm</label>
+                    <label for="exampleFormControlTextarea1" class="form-label" style="margin-left: 5px; display: flex; margin-top: 10px; margin-bottom: 0px">Nhập thông tin sản phẩm <p style="color: red; margin-left: 5px;">(*)</p></label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="thongtin"> <?= isset($Sanpham['mota_sanpham']) ? $Sanpham['mota_sanpham'] : ''?> </textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Hãng sản xuất</label>
+                    <label for="exampleInputEmail1" class="form-label" style="margin-left: 5px; display: flex; margin-top: 10px; margin-bottom: 0px">Hãng sản xuất <p style="color: red; margin-left: 5px;">(*)</p></label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="hangsanxuat" value="<?= isset($Sanpham['hang_sanxuat']) ? $Sanpham['hang_sanxuat'] : ''?>">
                 </div>
                 <input type="submit" value="Sửa đổi" name="update" style="width: 120px; height: 35px; border-radius: 10px;">

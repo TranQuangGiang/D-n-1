@@ -86,8 +86,6 @@
                         <th>Mã Sản Phẩm</th>
                         <th>Tên/Ảnh Sản Phẩm</th>
                         <th>Hãng Sản Xuất</th>
-                        <th>Ngày nhập</th>
-                        <th>Mô tả sản phẩm</th>
                         <th>Danh mục mẹ</th>
                         <th>Danh mục con</th>
                         <th>Hành Động</th>
@@ -103,8 +101,6 @@
                         <td><?= $Sanpham['ma_sp'] ?></td>
                         <td><?= $Sanpham['ten_sp'] ?></td>
                         <td><?= $Sanpham['hang_sanxuat'] ?></td>
-                        <td><?= $Sanpham['ngaynhap'] ?></td>
-                        <td><?= $Sanpham['mota_sanpham'] ?></td>
                         <td><?= $ten_danhmuc['ten_danhmuc'] ?></td>
                         <td><?= $ten_danhmuc_con['ten_danhmuc_con']?></td>
                         <td>
