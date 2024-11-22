@@ -80,8 +80,9 @@
         'updateDetail' => (new ProductDetailControllers()) -> updateDetail(),
         'postupdateDetail' => (new ProductDetailControllers()) -> postupdateDetail(),
         'deleteDetail' => (new ProductDetailControllers()) ->  deleteDetail(),
-        // giao diện
+        // giao diện client
         // nav
+        'listsanphamDanhmuc' => (new ClientController()) -> listsanphamDanhmuc(), 
         
     };
     

@@ -89,7 +89,7 @@
             top: 100%; /* Hiển thị dưới menu cha */
             left: 0;
             list-style: none;
-            padding: 10px 0;
+            padding: 5px 0;
             margin: 0;
             background-color: #F2F4F7;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -119,7 +119,7 @@
     <section class="header">
         <header>
             <div class="logo">
-                <img src="./img/logo.png" alt="">
+                <a href="?act=/"><img src="./img/logo.png" alt=""></a>
             </div>
             <form action="">
                 <input type="text" placeholder="Bạn đang tìm gì .....">
@@ -143,7 +143,7 @@
                     ?>
                         <ul class="submenu">
                             <?php foreach ($DanhmucNav as $danhmuccon){ ?>
-                                <li><a href="#"><?= $danhmuccon['ten_danhmuc_con'] ?></a></li>
+                                <li><a href="?act=listsanphamDanhmuc&id=<?= $danhmuccon['id_danhmuc_con'] ?>"><?= $danhmuccon['ten_danhmuc_con'] ?></a></li>
                             <?php } ?>
                         </ul>
                     <?php  ?>
